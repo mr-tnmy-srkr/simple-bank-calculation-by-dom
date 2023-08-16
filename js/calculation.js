@@ -59,6 +59,6 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
 
 });
 
-document.getElementById("btn-logout").addEventListener("click", function (){
+document.getElementById('btn-logout').addEventListener("click", function (){
   window.location.href = 'index.html';
 });

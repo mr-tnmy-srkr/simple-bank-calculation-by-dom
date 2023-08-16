@@ -11,7 +11,7 @@ document.getElementById("btn-submit").addEventListener("click", function () {
     alert("You have entered wrong password!!😒");
   } else if (email !== "mybank@bank.com" && password === "secret") {
     alert("You have entered wrong email id!!😒");
-  } else if(email !== "mybank@bank.com" && password !== "secret"){
-   alert("You have entered wrong Email id & Password!! Please try again");
+  } else if (email !== "mybank@bank.com" && password !== "secret") {
+    alert("You have entered wrong Email id & Password!! Please try again");
   }
 });
