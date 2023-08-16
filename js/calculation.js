@@ -1,8 +1,7 @@
 document.getElementById("btn-deposit").addEventListener("click", function () {
   const depositField = document.getElementById("deposit-field");
   const newDepositAmountStr = depositField.value;
-  const newDepositAmount = parseFloat(newDepositAmountStr);
-
+  const newDepositAmount = parseFloat(parseInt(newDepositAmountStr).toFixed(2));
   depositField.value = "";
 
   if(isNaN(newDepositAmount)){
@@ -28,7 +27,7 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
 document.getElementById("btn-withdraw").addEventListener("click", function () {
   const withdrawField = document.getElementById("withdraw-field");
   const newWithdrawAmountStr = withdrawField.value;
-  const newWithdrawAmount = parseFloat(newWithdrawAmountStr);
+  const newWithdrawAmount = parseFloat(parseFloat(newWithdrawAmountStr).toFixed(2));
 
   withdrawField.value = '';
 
@@ -58,4 +57,8 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
   const currentBalanceTotal = previousBalanceTotal - newWithdrawAmount;
   balanceTotalElement.innerText = currentBalanceTotal;
 
+});
+
+document.getElementById("btn-logout").addEventListener("click", function (){
+  window.location.href = 'index.html';
 });
