@@ -1,7 +1,7 @@
 document.getElementById("btn-deposit").addEventListener("click", function () {
   const depositField = document.getElementById("deposit-field");
   const newDepositAmountStr = depositField.value;
-  const newDepositAmount = parseFloat(parseInt(newDepositAmountStr).toFixed(2));
+  const newDepositAmount = parseFloat(parseFloat(newDepositAmountStr).toFixed(2));
   depositField.value = "";
 
   if(isNaN(newDepositAmount)){
@@ -9,10 +9,10 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
     return;
   }
 
-  const depositTotalElement = document.getElementById("deposit-total");
+  const depositTotalElement = document.getElementById("deposit-total"); 
   const newPreviousTotalStr = depositTotalElement.innerText;
   const newPreviousDepositTotal = parseFloat(newPreviousTotalStr);
-  const currentDepositTotal = newDepositAmount + newPreviousDepositTotal;
+  const currentDepositTotal = parseFloat((newDepositAmount + newPreviousDepositTotal).toFixed(2));
 
   depositTotalElement.innerText = currentDepositTotal;
 
@@ -20,7 +20,7 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
   const previousBalanceTotalStr = balanceTotalElement.innerText;
   const previousBalanceTotal = parseFloat(previousBalanceTotalStr);
 
-  const currentBalanceTotal = previousBalanceTotal + newDepositAmount;
+  const currentBalanceTotal = parseFloat((previousBalanceTotal + newDepositAmount).toFixed(2));
   balanceTotalElement.innerText = currentBalanceTotal;
 
 });
@@ -51,10 +51,10 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
     return;
   }
 
-  const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+  const currentWithdrawTotal = parseFloat(parseFloat(previousWithdrawTotal + newWithdrawAmount).toFixed(2));
   withdrawTotalElement.innerText = currentWithdrawTotal;
 
-  const currentBalanceTotal = previousBalanceTotal - newWithdrawAmount;
+  const currentBalanceTotal = parseFloat(parseFloat(previousBalanceTotal - newWithdrawAmount).toFixed(2));
   balanceTotalElement.innerText = currentBalanceTotal;
 
 });
