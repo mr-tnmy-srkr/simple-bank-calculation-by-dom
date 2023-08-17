@@ -1,45 +1,50 @@
 document.getElementById("btn-deposit").addEventListener("click", function () {
   const depositField = document.getElementById("deposit-field");
   const newDepositAmountStr = depositField.value;
-  const newDepositAmount = parseFloat(parseFloat(newDepositAmountStr).toFixed(2));
-  depositField.value = "";
+ 
 
-  if(isNaN(newDepositAmount)){
+  if(isNaN(newDepositAmountStr) || newDepositAmountStr === ""){
     alert('Please provide a valid number');
+    depositField.value = ""; 
     return;
   }
+
+  
+
+  const newDepositAmount = parseFloat(parseFloat(newDepositAmountStr).toFixed(2));
+depositField.value = newDepositAmount.toFixed(2);
 
   const depositTotalElement = document.getElementById("deposit-total"); 
   const newPreviousTotalStr = depositTotalElement.innerText;
   const newPreviousDepositTotal = parseFloat(newPreviousTotalStr);
   const currentDepositTotal = parseFloat((newDepositAmount + newPreviousDepositTotal).toFixed(2));
 
-  depositTotalElement.innerText = currentDepositTotal;
+  depositTotalElement.innerText = currentDepositTotal.toFixed(2);
+  depositField.value = ""; 
 
   const balanceTotalElement = document.getElementById("balance-total");
   const previousBalanceTotalStr = balanceTotalElement.innerText;
   const previousBalanceTotal = parseFloat(previousBalanceTotalStr);
 
   const currentBalanceTotal = parseFloat((previousBalanceTotal + newDepositAmount).toFixed(2));
-  balanceTotalElement.innerText = currentBalanceTotal;
+  balanceTotalElement.innerText = currentBalanceTotal.toFixed(2);
 
 });
 document.getElementById("btn-withdraw").addEventListener("click", function () {
   const withdrawField = document.getElementById("withdraw-field");
   const newWithdrawAmountStr = withdrawField.value;
-  const newWithdrawAmount = parseFloat(parseFloat(newWithdrawAmountStr).toFixed(2));
-
-  withdrawField.value = '';
-
-  if(isNaN(newWithdrawAmount)){
+  
+  if(isNaN(newWithdrawAmountStr) || newWithdrawAmountStr === ""){
     alert('Please provide a valid number');
+    withdrawField.value = '';
     return;
   }
+  const newWithdrawAmount = parseFloat(parseFloat(newWithdrawAmountStr).toFixed(2));
 
   const withdrawTotalElement = document.getElementById("withdraw-total");
   const previousWithdrawTotalStr = withdrawTotalElement.innerText;
   const previousWithdrawTotal = parseFloat(previousWithdrawTotalStr);
-
+  withdrawField.value = '';
 
   
   const balanceTotalElement = document.getElementById("balance-total");
@@ -52,10 +57,10 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
   }
 
   const currentWithdrawTotal = parseFloat(parseFloat(previousWithdrawTotal + newWithdrawAmount).toFixed(2));
-  withdrawTotalElement.innerText = currentWithdrawTotal;
+  withdrawTotalElement.innerText = currentWithdrawTotal.toFixed(2);
 
   const currentBalanceTotal = parseFloat(parseFloat(previousBalanceTotal - newWithdrawAmount).toFixed(2));
-  balanceTotalElement.innerText = currentBalanceTotal;
+  balanceTotalElement.innerText = currentBalanceTotal.toFixed(2);
 
 });
 
